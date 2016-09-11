@@ -1,0 +1,29 @@
+{
+    "name": "sunnysideup/google_map_smarter",
+    "type": "silverstripe-module",
+    "description": "A fresh approach to Google Maps for the Silverstripe CMS",
+    "keywords": [
+        "silverstripe",
+        "geocoding",
+        "address",
+        "google",
+        "map",
+        "static map",
+        "markers",
+        "google maps"
+    ],
+    "license": "Sunny Side Up (BSD-3-Clause and CUSTOM)",
+    "authors": [
+        {
+            "name": "Nicolaas Francken",
+            "email": "modules@sunnysideup.co.nz",
+            "role": "lead developer"
+        }
+    ],
+    "require": {
+        "silverstripe/framework": "~3.1"
+    },
+    "extra": {
+        "installer-name": "google_map_smarter"
+    }
+}

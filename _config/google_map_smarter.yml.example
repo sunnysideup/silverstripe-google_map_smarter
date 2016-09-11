@@ -1,0 +1,2 @@
+StaticGoogleMapMaker:
+  api_key: 'obtain from google api console ... google it!'
