@@ -169,7 +169,7 @@ class DynamicGoogleMapSmarter extends Object
      * @param  string $markerCallback (optional)
      * @return this
      */
-    public static function include($points, $markerCallback = null)
+    public static function create_map($points, $markerCallback = null)
     {
         $googleJS =
             "//maps.googleapis.com/maps/api/js"
@@ -179,17 +179,19 @@ class DynamicGoogleMapSmarter extends Object
         Requirements::javascript($googleJS);
         Requirements::javascript('google_map_smarter/javascript/GoogleMapSmarter.js');
         Requirements::customScript('
-                var GoogleMapLocationsForPage = [];
-                GoogleMapLocationsForPage.push({
+                if(typeof GoogleMapSmarterOptions === "undefined") {
+                    var GoogleMapSmarterOptions = []
+                }
+                GoogleMapSmarterOptions.push({
                     id: "'.$this->getMapVariable('mapID', 'map_id').'",
                     iconIsRetinaSize:  '.$this->getMapVariable('iconIsRetinaSize', 'icon_is_retina_size').',
                     iconURL:  "'.$this->getMapVariable('iconURL', 'icon_url').'",
-                    iconWidth:  '.$this->getMapVariable('iconWidth', 'iconWidth').',
-                    iconHeight: '.$this->getMapVariable('iconHeight', 'iconHeight').',
-                    defaultZoom: '.$this->getMapVariable('defaultZoom', 'defaultZoom').',
+                    iconWidth:  '.$this->getMapVariable('iconWidth', 'icon_width').',
+                    iconHeight: '.$this->getMapVariable('iconHeight', 'icon_height').',
+                    defaultZoom: '.$this->getMapVariable('defaultZoom', 'default_zoom').',
                     defaultLocation: {
-                        lat: '.$this->getMapVariable('defaultLocationLat', 'defaultLocation_lat').',
-                        lng: '.$this->getMapVariable('defaultLocationLng', 'defaultLocation_lng').'
+                        lat: '.$this->getMapVariable('defaultLocationLat', 'default_location_lat').',
+                        lng: '.$this->getMapVariable('defaultLocationLng', 'default_location_lng').'
                     },
                     points: '.json_encode($points).',
                     markerCallbackFx: '.$this->getMapVariable('markerCallbackFx', 'marker_callback_fx').'
