@@ -26,7 +26,7 @@ class StaticGoogleMapSmarter extends Object
             '&visual_refresh=true';
         $key = Config::inst()->get('GoogleMapSmarter', 'api_key');
         if($key) {
-            $link .= '&key='.Config::inst()->get('GoogleMapSmarter', 'api_key');
+            $link .= '&key='.$key;
         }
 
 
@@ -42,5 +42,5 @@ class StaticGoogleMapSmarter extends Object
         }
         return $link;
     }
-    
+
 }

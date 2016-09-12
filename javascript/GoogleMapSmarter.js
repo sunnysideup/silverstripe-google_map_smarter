@@ -16,7 +16,7 @@
  *      - lng: ....
  *      - id: .....
  *    ]
- *  - markerCallBack: function() { ... }
+ *  - markerCallbackFX: function() { ... }
  *
  *
  *
@@ -44,10 +44,8 @@ function GoogleMapSmarter (mapOptions) {
             defaultZoom: 7,
             defaultLocation: {lat: 0, lng: 0},
             points: [
-                {title: "Address 1", lat: -42, lng: 179.3, id: 1},
-                {title: "Address 1", lat: -43, lng: 171.3, id: 2}
             ],
-            markerCallBack: null
+            markerCallbackFX: null
         },
 
         init: function(mapOptions) {
@@ -57,9 +55,8 @@ function GoogleMapSmarter (mapOptions) {
                 document.getElementById(this.mapOptions.id),
                 {
                     center: {lat: MyMap.mapOptions.defaultLocation.lat, lng: MyMap.mapOptions.defaultLocation.lng},
-                    zoom: 8,
-                    options: {styles: MyMap.mapStyling},
-                    disableDefaultUI: true
+                    zoom: MyMap.defaultZoom,
+                    options: {styles: MyMap.mapStyling}
                 }
             );
             MyMap.boundsManager = new google.maps.LatLngBounds();
@@ -97,10 +94,6 @@ function GoogleMapSmarter (mapOptions) {
         addMarkerToMap: function(id, title, address, lat, lng, markerNumber){
 
             var infowindow = new google.maps.InfoWindow();
-            divider = 1;
-            if(MyMap.mapOptions.iconIsRetinaSize) {
-                divider = 2
-            }
             var iconConfig = {
                 url: MyMap.mapOptions.iconURL,
 
@@ -109,12 +102,12 @@ function GoogleMapSmarter (mapOptions) {
                     mapOptions.iconHeight
                 ),
                 anchor: new google.maps.Point(
-                    Math.round(mapOptions.iconWidth / (4 * divider)),
-                    Math.round(mapOptions.iconHeight / (4 * divider))
+                    Math.round(mapOptions.iconWidth / (2)),
+                    Math.round(mapOptions.iconHeight)
                 ),
                 scaledSize: new google.maps.Size(
-                    Math.round(mapOptions.iconWidth / (1 * divider)),
-                    Math.round(mapOptions.iconHeight / (1 * divider))
+                    Math.round(mapOptions.iconWidth),
+                    Math.round(mapOptions.iconHeight)
                 )
             };
 
@@ -133,8 +126,8 @@ function GoogleMapSmarter (mapOptions) {
                 'click',
                 (function(marker, markerNumber, id) {
                     return function() {
-                        if(typeof MyMap.mapOptions.markerCallBack === 'function') {
-                            MyMap.mapOptions.markerCallBack(marker, markerNumber, id);
+                        if(typeof MyMap.mapOptions.markerCallbackFX === 'function') {
+                            MyMap.mapOptions.markerCallbackFX(marker, markerNumber, id);
                         } else {
                             infowindow.setContent('<h5>'+title + '</h5>' + '<address>'+address+'</address>');
                             infowindow.open(MyMap.map, marker);
@@ -191,7 +184,7 @@ jQuery(document).ready(
             "load",
             function () {
                 if(typeof GoogleMapSmarterOptions !== "undefined") {
-                    if(GoogleMapLocationsForPage.length > 0) {
+                    if(GoogleMapSmarterOptions.length > 0) {
                         jQuery(GoogleMapSmarterOptions).each(
                             function(i, mapOptions) {
                                 var obj = new GoogleMapSmarter(mapOptions);
