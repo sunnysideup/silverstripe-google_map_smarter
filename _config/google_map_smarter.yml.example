@@ -1,2 +1,3 @@
-StaticGoogleMapMaker:
-  api_key: 'obtain from google api console ... google it!'
+GoogleMapSmarter:
+  api_key: 'get one from https://developers.google.com/maps/'
+  api_version: 3.24

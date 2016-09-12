@@ -3,14 +3,6 @@
 
 class StaticGoogleMapSmarter extends Object
 {
-
-    /**
-     * get one from https://developers.google.com/maps/, etc...
-     *
-     * @var string
-     */
-    private static $api_key = '';
-
     /**
      * Array is Formatted Like This:
      * LocationOfIcon, LinkOfMapPin
@@ -32,9 +24,9 @@ class StaticGoogleMapSmarter extends Object
             '&type=roadmap'.
             '&format=png'.
             '&visual_refresh=true';
-        $key = Config::inst()->get('StaticGoogleMapMaker', 'api_key');
+        $key = Config::inst()->get('GoogleMapSmarter', 'api_key');
         if($key) {
-            $link .= '&key='.Config::inst()->get('StaticGoogleMapMaker', 'api_key');
+            $link .= '&key='.Config::inst()->get('GoogleMapSmarter', 'api_key');
         }
 
 
@@ -50,4 +42,5 @@ class StaticGoogleMapSmarter extends Object
         }
         return $link;
     }
+    
 }

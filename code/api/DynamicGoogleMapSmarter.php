@@ -171,6 +171,12 @@ class DynamicGoogleMapSmarter extends Object
      */
     public static function include($points, $markerCallback = null)
     {
+        $googleJS =
+            "//maps.googleapis.com/maps/api/js"
+            ."?v=".Config::inst()->get('GoogleMapSmarter', "api_version")
+            ."&libraries=places"
+            ."&key=".Config::inst()->get('GoogleMapSmarter', "api_key");
+        Requirements::javascript($googleJS);
         Requirements::javascript('google_map_smarter/javascript/GoogleMapSmarter.js');
         Requirements::customScript('
                 var GoogleMapLocationsForPage = [];
