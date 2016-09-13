@@ -166,14 +166,29 @@ function GoogleMapSmarter (mapOptions) {
                 }
             );
         }
-
-
-        /***
-        * action time
-        */
     }
 
+
+    /***
+    * action time
+    */
+
     MyMap.init(mapOptions);
+
+    /**
+     * exposed API
+     *
+     */
+    return {
+        map: MyMap.map,
+        setVar: function(variable, value) {
+            MyMap[variable] = value;
+            return this;
+        },
+        getVar: function(variable) {
+            return MyMap[variable]
+        },
+    };
 
 }
 
@@ -187,7 +202,8 @@ jQuery(document).ready(
                     if(GoogleMapSmarterOptions.length > 0) {
                         jQuery(GoogleMapSmarterOptions).each(
                             function(i, mapOptions) {
-                                var obj = new GoogleMapSmarter(mapOptions);
+                                mapOptions.map = new GoogleMapSmarter(mapOptions);
+                                GoogleMapSmarterOptions[i]['map'] = new GoogleMapSmarter(mapOptions);
                             }
                         );
                     }
