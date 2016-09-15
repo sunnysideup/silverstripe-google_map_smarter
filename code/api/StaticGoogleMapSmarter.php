@@ -33,10 +33,9 @@ class StaticGoogleMapSmarter extends Object
         foreach($locationsAndIcons as $locationAndIcon) {
             $location = $locationAndIcon[0];
             $iconLink = isset($locationAndIcon[1]) ? urlencode(Director::absoluteURL($locationAndIcon[1])) : '';
-            if($iconLink & 1 === 2) {
+            if($iconLink) {
                 $link .= '&markers=icon:'.$iconLink.'%7Cshadow:true%7C'.$location;
-            }
-            else {
+            } else {
                 $link .= '&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C'.$location;
             }
         }
