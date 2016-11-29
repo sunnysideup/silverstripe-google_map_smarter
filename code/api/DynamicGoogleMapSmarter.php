@@ -92,85 +92,94 @@ class DynamicGoogleMapSmarter extends Object
 
     protected $markerCallbackFx = null;
 
-    function setMapID($s)
+    public function setMapID($s)
     {
         return $this->setMapVariable('mapID', $s);
     }
 
-    function getMapID($s) {
+    public function getMapID($s)
+    {
         return $this->getMapVariable('mapID', 'map_id');
     }
 
-    function setIconIsRetinaSize($s)
+    public function setIconIsRetinaSize($s)
     {
         return $this->setMapVariable('iconIsRetinaSize',  $s);
     }
 
-    function getIconIsRetinaSize($s) {
+    public function getIconIsRetinaSize($s)
+    {
         return $this->getMapVariable('iconIsRetinaSize', 'icon_is_retina_size');
     }
 
 
-    function setIconURL($s)
+    public function setIconURL($s)
     {
         return $this->setMapVariable('iconURL',  $s);
     }
 
-    function getIconURL($s) {
+    public function getIconURL($s)
+    {
         return $this->getMapVariable('iconURL', 'icon_url');
     }
 
-    function setIconWidth($s)
+    public function setIconWidth($s)
     {
         return $this->setMapVariable('iconWidth',  $s);
     }
 
-    function getIconWidth($s) {
+    public function getIconWidth($s)
+    {
         return $this->getMapVariable('iconWidth', 'icon_width');
     }
 
-    function setIconHeight($s)
+    public function setIconHeight($s)
     {
         return $this->setMapVariable('iconHeight', $s);
     }
 
-    function getIconHeight($s) {
+    public function getIconHeight($s)
+    {
         return $this->getMapVariable('iconHeight', 'icon_height');
     }
 
-    function setDefaultZOom($s)
+    public function setDefaultZOom($s)
     {
         return $this->setMapVariable('defaultZoom', $s);
     }
 
-    function getDefaultZoom($s) {
+    public function getDefaultZoom($s)
+    {
         return $this->getMapVariable('defaultZoom', 'defaultZoom');
     }
 
-    function setDefaultLocationLat($s)
+    public function setDefaultLocationLat($s)
     {
         return $this->setMapVariable('defaultLocationLat', $s);
     }
 
-    function getDefaultLocationLat($s) {
+    public function getDefaultLocationLat($s)
+    {
         return $this->getMapVariable('defaultLocationLat', 'defaultLocation_lat');
     }
 
-    function setDefaultLocationLng($s)
+    public function setDefaultLocationLng($s)
     {
         return $this->setMapVariable('defaultLocationLng', $s);
     }
 
-    function getDefaultLocationLng($s) {
+    public function getDefaultLocationLng($s)
+    {
         return $this->getMapVariable('defaultLocationLng', 'defaultLocation_lng');
     }
 
-    function setMarkerCallbackFX($s)
+    public function setMarkerCallbackFX($s)
     {
         return $this->setMapVariable('markerCallbackFX', $s);
     }
 
-    function getMarkerCallbackFX($s) {
+    public function getMarkerCallbackFX($s)
+    {
         return $this->getMapVariable('markerCallbackFX', 'marker_callback_fx');
     }
 
@@ -184,7 +193,7 @@ class DynamicGoogleMapSmarter extends Object
      */
     protected function getMapVariable($internalVariableName, $staticVariableName)
     {
-        if($this->$internalVariableName !== null) {
+        if ($this->$internalVariableName !== null) {
             return $this->$internalVariableName;
         } else {
             return $this->Config()->$staticVariableName;
@@ -204,6 +213,4 @@ class DynamicGoogleMapSmarter extends Object
         $this->$internalVariableName = $s;
         return $this;
     }
-
-
 }

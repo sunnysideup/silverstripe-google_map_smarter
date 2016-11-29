@@ -25,15 +25,15 @@ class StaticGoogleMapSmarter extends Object
             '&format=png'.
             '&visual_refresh=true';
         $key = Config::inst()->get('GoogleMapSmarter', 'api_key');
-        if($key) {
+        if ($key) {
             $link .= '&key='.$key;
         }
 
 
-        foreach($locationsAndIcons as $locationAndIcon) {
+        foreach ($locationsAndIcons as $locationAndIcon) {
             $location = $locationAndIcon[0];
             $iconLink = isset($locationAndIcon[1]) ? urlencode(Director::absoluteURL($locationAndIcon[1])) : '';
-            if($iconLink) {
+            if ($iconLink) {
                 $link .= '&markers=icon:'.$iconLink.'%7Cshadow:true%7C'.$location;
             } else {
                 $link .= '&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C'.$location;
@@ -41,5 +41,4 @@ class StaticGoogleMapSmarter extends Object
         }
         return $link;
     }
-
 }
