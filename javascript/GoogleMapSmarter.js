@@ -49,13 +49,12 @@ function GoogleMapSmarter (mapOptions) {
         },
 
         init: function(mapOptions) {
-            this.mapOptions =  jQuery.extend(this.mapOptions, mapOptions);
-
+            MyMap.mapOptions =  jQuery.extend(this.mapOptions, mapOptions);
             MyMap.map = new google.maps.Map(
-                document.getElementById(this.mapOptions.id),
+                document.getElementById(MyMap.mapOptions.id),
                 {
                     center: {lat: MyMap.mapOptions.defaultLocation.lat, lng: MyMap.mapOptions.defaultLocation.lng},
-                    zoom: MyMap.defaultZoom,
+                    zoom: MyMap.mapOptions.defaultZoom,
                     options: {styles: MyMap.mapStyling}
                 }
             );
@@ -136,7 +135,7 @@ function GoogleMapSmarter (mapOptions) {
                 })(marker, markerNumber, id)
             );
             if(markerNumber == 0) {
-                MyMap.map.setZoom(MyMap.zoom);
+                MyMap.map.setZoom(MyMap.mapOptions.defaultZoom);
                 MyMap.map.setCenter(positionObject);
             }
             else {
