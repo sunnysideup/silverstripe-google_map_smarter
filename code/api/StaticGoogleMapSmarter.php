@@ -18,7 +18,7 @@ class StaticGoogleMapSmarter extends Object
      */
     public static function create_map($width = 640, $height = 640, $locationsAndIcons = array())
     {
-        $link = 'http://maps.googleapis.com/maps/api/staticmap?'.
+        $link = 'https://maps.googleapis.com/maps/api/staticmap?'.
             'autoscale=2'.
             '&size='.$width.'x'.$height.
             '&type=roadmap'.
