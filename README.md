@@ -15,7 +15,7 @@
 
  * [Developer Docs](docs/en/INDEX.md)
  * [User Guide](docs/en/userguide.md)
- * [API Docs](http://docs.ssmods.com/sunnysideup/google_map_smarter)
+ * [API Docs](http://docs.ssmods.com/sunnysideup/google_map_smarter/classes.xhtml)
 
 ## Requirements
 
